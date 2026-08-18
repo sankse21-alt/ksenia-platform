@@ -4,8 +4,6 @@ const COLUMNS = [
   {
     title: "Платформа",
     links: [
-      { href: "/method", label: "О методе F4QUUS CODE" },
-      { href: "/neurotypes", label: "Нейротипы" },
       { href: "/products", label: "Продукты" },
       { href: "/quiz", label: "Пройти квиз" },
     ],

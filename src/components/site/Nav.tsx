@@ -1,8 +1,6 @@
 import Link from "next/link";
 
 const LINKS = [
-  { href: "/method", label: "О методе" },
-  { href: "/neurotypes", label: "Нейротипы" },
   { href: "/products", label: "Продукты" },
   { href: "/book", label: "Книга" },
   { href: "/blog", label: "Блог" },
