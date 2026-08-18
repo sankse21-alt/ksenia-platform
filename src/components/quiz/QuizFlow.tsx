@@ -4,13 +4,13 @@ import { useMemo, useState } from "react";
 import { QUIZ_QUESTIONS } from "@/lib/quiz-questions";
 import {
   ELEMENTS,
-  ELEMENT_ORDER,
   NEUROTYPES,
   scoreToNeurotype,
   type ElementId,
   type QuizScore,
 } from "@/lib/neurotypes";
 import { saveQuizLead } from "@/lib/supabase";
+import ElementWheel from "./ElementWheel";
 
 type Stage = "intro" | "question" | "result";
 
@@ -67,6 +67,7 @@ export default function QuizFlow() {
 
   if (stage === "intro") {
     const example = NEUROTYPES[0]; // Стратег-Исследователь — иллюстративный пример
+    const exampleScore: QuizScore = { air: 5, fire: 4, water: 2, earth: 1 };
     return (
       <div className="mx-auto max-w-xl text-center py-16 px-6">
         <div className="font-[family-name:var(--font-label)] font-bold text-xs tracking-[0.14em] uppercase text-gold">
@@ -98,15 +99,10 @@ export default function QuizFlow() {
           <h2 className="font-[family-name:var(--font-display)] font-semibold text-2xl mt-3">
             {example.title}
           </h2>
-          <div className="flex flex-wrap gap-2 mt-3">
-            <span className="rounded-full border border-line bg-teal-soft text-teal font-[family-name:var(--font-label)] font-semibold text-xs px-3 py-1.5">
-              Зона Сияния · {ELEMENTS[example.shining].element}
-            </span>
-            <span className="rounded-full border border-line bg-gold-soft text-gold font-[family-name:var(--font-label)] font-semibold text-xs px-3 py-1.5">
-              Зона Поддержки · {ELEMENTS[example.support].element}
-            </span>
+          <div className="mt-5">
+            <ElementWheel score={exampleScore} centerLabel={example.title} />
           </div>
-          <p className="text-ink-soft text-sm mt-4 leading-relaxed">{example.description}</p>
+          <p className="text-ink-soft text-sm mt-5 leading-relaxed">{example.description}</p>
         </div>
       </div>
     );
@@ -153,7 +149,12 @@ export default function QuizFlow() {
       <h1 className="font-[family-name:var(--font-display)] font-semibold text-3xl sm:text-4xl mt-4 text-balance">
         {neurotype.title}
       </h1>
-      <div className="flex flex-wrap gap-2 mt-4">
+
+      <div className="mt-7 rounded-2xl border border-line bg-paper-raised p-7">
+        <ElementWheel score={score} centerLabel={neurotype.title} />
+      </div>
+
+      <div className="flex flex-wrap gap-2 mt-5">
         <span className="rounded-full border border-line bg-teal-soft text-teal font-[family-name:var(--font-label)] font-semibold text-xs px-3 py-1.5">
           Зона Сияния · {ELEMENTS[neurotype.shining].element}
         </span>
@@ -207,11 +208,6 @@ export default function QuizFlow() {
           </button>
         </form>
       )}
-
-      <div className="mt-10 pt-6 border-t border-line text-xs text-ink-faint">
-        Баланс ответов —{" "}
-        {ELEMENT_ORDER.map((id) => `${ELEMENTS[id].element}: ${score[id]}`).join(" · ")}
-      </div>
     </div>
   );
 }

@@ -13,6 +13,13 @@
   --gold-soft: #efe3c3;
   --teal: #1f4a44;
   --teal-soft: #dde7e4;
+
+  /* Категориальная палитра для 4 стихий — валидировано скриптом dataviz
+     (validate_palette.js): все проверки пройдены в этом порядке. */
+  --series-air: #2a78d6;
+  --series-fire: #eb6834;
+  --series-water: #1baf7a;
+  --series-earth: #c98500;
 }
 
 @theme inline {
@@ -28,6 +35,10 @@
   --color-gold-soft: var(--gold-soft);
   --color-teal: var(--teal);
   --color-teal-soft: var(--teal-soft);
+  --color-series-air: var(--series-air);
+  --color-series-fire: var(--series-fire);
+  --color-series-water: var(--series-water);
+  --color-series-earth: var(--series-earth);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-label: var(--font-label);

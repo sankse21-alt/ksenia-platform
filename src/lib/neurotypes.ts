@@ -46,6 +46,23 @@ export const ELEMENTS: Record<ElementId, ElementInfo> = {
 
 export const ELEMENT_ORDER: ElementId[] = ["air", "fire", "water", "earth"];
 
+// Категориальная палитра валидирована skills/dataviz/scripts/validate_palette.js
+// (все проверки пройдены для этого порядка). Значения — CSS custom properties
+// из globals.css, не хардкод хексов, чтобы тема управлялась в одном месте.
+export const ELEMENT_SERIES_VAR: Record<ElementId, string> = {
+  air: "var(--series-air)",
+  fire: "var(--series-fire)",
+  water: "var(--series-water)",
+  earth: "var(--series-earth)",
+};
+
+export const ELEMENT_SWATCH_CLASS: Record<ElementId, string> = {
+  air: "bg-series-air",
+  fire: "bg-series-fire",
+  water: "bg-series-water",
+  earth: "bg-series-earth",
+};
+
 export interface NeurotypeInfo {
   slug: string;
   shining: ElementId; // Зона Сияния — главный талант
