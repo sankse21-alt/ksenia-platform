@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const LINKS = [
   { href: "/products", label: "Продукты" },
@@ -10,11 +11,15 @@ export default function Nav() {
   return (
     <header className="border-b border-line">
       <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between gap-6">
-        <Link
-          href="/"
-          className="font-[family-name:var(--font-label)] font-bold text-sm tracking-[0.14em] uppercase text-ink shrink-0"
-        >
-          F4QUUS CODE
+        <Link href="/" className="shrink-0 flex items-center h-10 w-[168px] relative">
+          <Image
+            src="/brand/logo.png"
+            alt="Ksenia Larsen"
+            fill
+            sizes="168px"
+            className="object-contain object-left"
+            priority
+          />
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm text-ink-soft">
           {LINKS.map((l) => (

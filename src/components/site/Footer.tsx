@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const COLUMNS = [
   {
@@ -23,11 +24,17 @@ export default function Footer() {
     <footer className="border-t border-line mt-24">
       <div className="mx-auto max-w-6xl px-6 py-14 grid grid-cols-1 sm:grid-cols-3 gap-10">
         <div>
-          <div className="font-[family-name:var(--font-label)] font-bold text-sm tracking-[0.14em] uppercase text-ink">
-            F4QUUS CODE
+          <div className="h-9 w-[150px] relative">
+            <Image
+              src="/brand/logo.png"
+              alt="Ksenia Larsen"
+              fill
+              sizes="150px"
+              className="object-contain object-left"
+            />
           </div>
           <p className="text-ink-soft text-sm mt-3 max-w-xs">
-            Метод и система Нейротипов Ксении Ларсен.
+            Метод F4QUUS CODE и система Нейротипов Ксении Ларсен.
           </p>
         </div>
         {COLUMNS.map((col) => (

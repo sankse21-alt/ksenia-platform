@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const LIFE_CARDS = [
   {
@@ -80,11 +81,15 @@ export default function Home() {
             Узнать свой нейротип
           </Link>
         </div>
-        {/* TODO: заменить на настоящий портрет Ксении, когда будут ассеты. */}
-        <div className="aspect-[4/5] rounded-3xl bg-teal-soft border border-line flex items-center justify-center">
-          <span className="font-[family-name:var(--font-display)] text-teal text-2xl">
-            Ксения Ларсен
-          </span>
+        <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-line relative">
+          <Image
+            src="/brand/ksenia-portrait.jpg"
+            alt="Ксения Ларсен"
+            fill
+            sizes="(min-width: 1024px) 40vw, 90vw"
+            className="object-cover"
+            priority
+          />
         </div>
       </section>
 
@@ -145,7 +150,15 @@ export default function Home() {
       {/* 04 — Ксения Ларсен (заглушка) */}
       <section className="mx-auto max-w-6xl px-6 py-16 border-t border-line">
         <div className="rounded-3xl border border-line bg-paper-raised p-10 flex flex-col sm:flex-row items-center gap-8">
-          <div className="w-32 h-32 rounded-full bg-teal-soft border border-line shrink-0" />
+          <div className="w-32 h-32 rounded-full overflow-hidden border border-line shrink-0 relative">
+            <Image
+              src="/brand/ksenia-portrait.jpg"
+              alt="Ксения Ларсен"
+              fill
+              sizes="128px"
+              className="object-cover"
+            />
+          </div>
           <div>
             <h2 className="font-[family-name:var(--font-display)] font-semibold text-2xl">
               Ксения Ларсен
