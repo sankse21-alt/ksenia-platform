@@ -5,6 +5,7 @@ import { QUIZ_QUESTIONS } from "@/lib/quiz-questions";
 import {
   ELEMENTS,
   ELEMENT_ORDER,
+  NEUROTYPES,
   scoreToNeurotype,
   type ElementId,
   type QuizScore,
@@ -65,6 +66,7 @@ export default function QuizFlow() {
   }
 
   if (stage === "intro") {
+    const example = NEUROTYPES[0]; // Стратег-Исследователь — иллюстративный пример
     return (
       <div className="mx-auto max-w-xl text-center py-16 px-6">
         <div className="font-[family-name:var(--font-label)] font-bold text-xs tracking-[0.14em] uppercase text-gold">
@@ -84,6 +86,28 @@ export default function QuizFlow() {
         >
           Начать тест
         </button>
+
+        {/* Превью результата — по образцу KPI Score: показываем, что человек получит */}
+        <div className="mt-16 text-left rounded-2xl border border-line bg-paper-raised p-7 relative overflow-hidden">
+          <div className="absolute top-5 right-5 font-[family-name:var(--font-label)] font-bold text-[10px] tracking-[0.1em] uppercase text-ink-faint bg-paper border border-line rounded-full px-3 py-1">
+            Пример разбора
+          </div>
+          <div className="font-[family-name:var(--font-label)] font-bold text-xs tracking-[0.14em] uppercase text-gold">
+            Ваш базовый Нейротип
+          </div>
+          <h2 className="font-[family-name:var(--font-display)] font-semibold text-2xl mt-3">
+            {example.title}
+          </h2>
+          <div className="flex flex-wrap gap-2 mt-3">
+            <span className="rounded-full border border-line bg-teal-soft text-teal font-[family-name:var(--font-label)] font-semibold text-xs px-3 py-1.5">
+              Зона Сияния · {ELEMENTS[example.shining].element}
+            </span>
+            <span className="rounded-full border border-line bg-gold-soft text-gold font-[family-name:var(--font-label)] font-semibold text-xs px-3 py-1.5">
+              Зона Поддержки · {ELEMENTS[example.support].element}
+            </span>
+          </div>
+          <p className="text-ink-soft text-sm mt-4 leading-relaxed">{example.description}</p>
+        </div>
       </div>
     );
   }
